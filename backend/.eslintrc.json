@@ -1,6 +1,5 @@
 {
   "env": {
-    "browser": true,
     "es6": true,
     "node": true,
     "jest": true
@@ -28,7 +27,7 @@
     "prettier/prettier": "error",
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
-    "@typescript-eslint/camelcase": "off",
+    "@typescript-eslint/camelcase": "of",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
