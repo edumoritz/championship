@@ -5,7 +5,6 @@ import CreatePlayerService from '@modules/players/services/CreatePlayerService';
 export default class PlayerController {
   public async create(request: Request, response: Response): Promise<Response> {
 
-    // const player_id = request.player.id;
     const { name, email, password } = request.body;
 
     const createPlayer = container.resolve(CreatePlayerService);
