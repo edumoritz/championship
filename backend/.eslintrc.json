@@ -27,7 +27,7 @@
     "prettier/prettier": "error",
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
-    "@typescript-eslint/camelcase": "of",
+    "@typescript-eslint/camelcase": "on",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

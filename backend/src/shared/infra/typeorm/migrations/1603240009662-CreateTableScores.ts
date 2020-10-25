@@ -1,7 +1,12 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
-export class CreateTableScores1603240009662 implements MigrationInterface {
-
+export default class CreateTableScores1603240009662
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -49,24 +54,26 @@ export class CreateTableScores1603240009662 implements MigrationInterface {
           {
             name: 'goal_difference',
             type: 'int',
-          }
+          },
         ],
       }),
     );
 
-    await queryRunner.createForeignKey('scores', new TableForeignKey({
-      name: 'PlayerScore',
-      columnNames: ['player_id'],
-      referencedColumnNames: ['id'],
-      referencedTableName: 'players',
-      onDelete: 'SET NULL',
-      onUpdate: 'CASCADE',
-    }))
+    await queryRunner.createForeignKey(
+      'scores',
+      new TableForeignKey({
+        name: 'PlayerScore',
+        columnNames: ['player_id'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'players',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey('scores', 'PlayerScore');
     await queryRunner.dropTable('scores');
   }
-
 }
