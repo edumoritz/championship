@@ -10,6 +10,11 @@ class PlayersRepository implements IPlayerRepository {
   constructor() {
     this.ormRepository = getRepository(Player)
   }
+
+  public async findAll(): Promise<Player[] | undefined> {
+    const players = await this.ormRepository.find();
+    return players;
+  }
   public async findByEmail(email: string): Promise<Player | undefined> {
     const player = await this.ormRepository.findOne({ where: { email } });
     return player;
