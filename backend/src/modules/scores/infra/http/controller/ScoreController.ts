@@ -20,7 +20,7 @@ export default class ScoreController {
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const player_id = request.player.id;
+    const player_id = request.params.id;
 
     const showScore = container.resolve(GetScoreService);
 
