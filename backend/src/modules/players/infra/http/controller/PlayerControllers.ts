@@ -24,10 +24,8 @@ export default class PlayerController {
   public async show(request: Request, response: Response): Promise<Response> {
     const player_id = request.player.id;
 
-    console.log('1')
     const showPlayer = container.resolve(GetPlayerService);
 
-    console.log('2')
     const player = await showPlayer.execute({ player_id })
 
     return response.json(classToClass(player));
