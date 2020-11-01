@@ -14,7 +14,7 @@ class CreateScoreService {
 
   public async execute(score: ICreateScoreDTO): Promise<Score> {
     const { player } = score;
-    const findScore = await this.scoresRepository.findById(String(player));
+    const findScore = await this.scoresRepository.findByPlayerId(String(player));
     if (findScore) throw new AppError('This player already have an score.');
 
     const scoreRepo = await this.scoresRepository.create({ ...score });

@@ -19,13 +19,18 @@ class ScoresRepository implements IScoresRepository {
 
     return newScore;
   }
-  public async findById(player_id: string): Promise<Score | undefined> {
+  public async findByPlayerId(player_id: string): Promise<Score | undefined> {
     const score = await this.ormRepository.findOne({ where: { player: player_id } });
     return score;
   }
 
   public async save(score: Score): Promise<Score> {
     return this.ormRepository.save(score);
+  }
+
+  public async findById(id: string): Promise<Score | undefined> {
+    const score = await this.ormRepository.findOne(id);
+    return score;
   }
 
 

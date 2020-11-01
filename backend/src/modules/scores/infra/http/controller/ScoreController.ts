@@ -9,7 +9,6 @@ export default class ScoreController {
   public async create(request: Request, response: Response): Promise<Response> {
     const player_id = request.player.id;
 
-    console.log('body: ', request.body)
     const createScore = container.resolve(CreateScoreService);
 
     const score = await createScore.execute({

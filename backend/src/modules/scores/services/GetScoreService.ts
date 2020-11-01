@@ -19,7 +19,7 @@ class GetScoreService {
 
   public async execute({ player_id }: IRequest): Promise<Score> {
 
-    const score = await this.scoresRepository.findById(player_id);
+    const score = await this.scoresRepository.findByPlayerId(player_id);
 
     if (!score) {
       throw new AppError('Score not found.');

@@ -15,10 +15,17 @@ class UpdateScoreService {
 
   public async execute(score: ICreateScoreDTO): Promise<Score> {
 
-    let findScore = await this.scoresRepository.findById(String(score.player));
+    const findScore = await this.scoresRepository.findById(score.id);
 
     if (!findScore) throw new AppError('Score not found');
-    findScore = score;
+    findScore.games = score.games;
+    findScore.goal_against = score.goal_against;
+    findScore.goal_difference = score.goal_difference;
+    findScore.goal_pro = score.goal_pro;
+    findScore.loss = score.loss;
+    findScore.points = score.points;
+    findScore.ties = score.ties;
+    findScore.wins = score.wins;
 
     return this.scoresRepository.save(findScore);
   }
