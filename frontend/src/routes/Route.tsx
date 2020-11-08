@@ -26,13 +26,13 @@ const Route: React.FC<RouteProps> = ({
         return isPrivate === !!player ? (
           <Component />
         ) : (
-            <Redirect
-              to={{
-                pathname: isPrivate ? '/' : '/dashboard',
-                state: { from: location },
-              }}
-            />
-          );
+          <Redirect
+            to={{
+              pathname: isPrivate ? '/' : '/dashboard',
+              state: { from: location },
+            }}
+          />
+        );
       }}
     />
   );
