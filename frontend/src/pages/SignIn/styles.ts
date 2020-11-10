@@ -15,22 +15,12 @@ export const Content = styled.div`
   width: 100%;
 `;
 
-const appearFromLeft = keyframes`
-  from {
-    opacity: 0;
-    transform: translateX(-500px);
-  } to {
-    opacity: 1
-    transform: translateX(0);
-  }
-`;
-
-export const AnimationContainer = styled.div`
+export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: ${appearFromLeft} 2s;
+
   .icon {
     color: #080863;
     height: 60px;
