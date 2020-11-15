@@ -4,6 +4,7 @@ import { Request, Response } from 'express';
 import CreateScoreService from '@modules/scores/services/CreateScoreService';
 import GetScoreService from '@modules/scores/services/GetScoreService';
 import UpdateScoreService from '@modules/scores/services/UpdateScoreService';
+import GetAllScoresService from '@modules/scores/services/GetAllScoresService';
 
 export default class ScoreController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -27,6 +28,16 @@ export default class ScoreController {
     const score = await showScore.execute({ player_id })
 
     return response.json(classToClass(score));
+  }
+
+  public async showAll(request: Request, response: Response): Promise<Response> {
+    
+    const showPlayers = container.resolve(GetAllScoresService);
+
+    const scores = await showPlayers.execute()
+
+    return response.json(classToClass(scores));
+
   }
 
   public async update(request: Request, response: Response): Promise<Response> {

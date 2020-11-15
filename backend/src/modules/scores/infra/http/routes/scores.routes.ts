@@ -9,6 +9,7 @@ const scoresController = new ScoreController();
 scoresRouter.use(ensureAuthenticated);
 scoresRouter.post('/', scoresController.create);
 scoresRouter.get('/:id', scoresController.show);
+scoresRouter.get('/', scoresController.showAll);
 scoresRouter.put('/:id', scoresController.update);
 
 export default scoresRouter;

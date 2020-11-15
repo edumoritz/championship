@@ -18,7 +18,7 @@ export default class PlayerController {
       password,
     });
 
-    return response.json(player);
+    return response.json(classToClass(player));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {

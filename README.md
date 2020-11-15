@@ -16,32 +16,39 @@
 </p>
 
 <p align="center">
+  <a href="#-frontend">Demo</a>
   <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-backend">Backend</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-frontend">Frontend</a>
 </p>
 
+## 👹  Demo
+
 ![Championship- Animated gif demo](demo/championship.gif)
+![Championship-dash - Animated gif demo](demo/championship-dash.gif)
 
-## 💻 Project
+## 💻  Project
 
-...
+This is a football game scoring project.
+It was created to train the use of reactjs libraries and record scores of FIFA games.
 
 
-## 👾 Technologies
+## 👾  Technologies
 
 This project is being developed with the following technologies:
 
 - [Node.js][nodejs]
 - [ReactJS][reactjs]
 - [Framer-Motion][framermotion]
+- [Material-UI][materialui]
+- [Styled-Components][styled]
 
-## 🌚 Backend
+## 🌚  Backend
 
 ...
 
-## 🌕 Frontend
+## 🌕  Frontend
 
 ...
 
@@ -50,3 +57,5 @@ Made with ♥ by Eduardo Moritz :wave: [Get in touch!](https://www.linkedin.com/
 [nodejs]: https://nodejs.org/
 [reactjs]: https://reactjs.org/
 [framermotion]: https://www.framer.com/motion/
+[materialui]: https://material-ui.com/pt/
+[styled]: https://styled-components.com/

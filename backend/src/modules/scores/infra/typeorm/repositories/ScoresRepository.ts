@@ -33,6 +33,11 @@ class ScoresRepository implements IScoresRepository {
     return score;
   }
 
+  public async findAll(): Promise<Score[] | undefined> {
+    const scores = await this.ormRepository.find();    
+    return scores;
+  }
+
 
 }
 
