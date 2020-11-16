@@ -1,5 +1,5 @@
 import Player from "@modules/players/infra/typeorm/entities/Player";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Double, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('scores')
 class Score {
@@ -34,6 +34,9 @@ class Score {
 
   @Column()
   goal_difference: number;
+
+  @Column('decimal', { precision: 12, scale: 2 })
+  utilization: number;
 
 }
 
