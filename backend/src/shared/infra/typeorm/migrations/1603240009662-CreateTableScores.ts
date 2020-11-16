@@ -21,39 +21,47 @@ export default class CreateTableScores1603240009662
           },
           {
             name: 'player_id',
-            type: 'uuid',
+            type: 'uuid',            
           },
           {
             name: 'points',
             type: 'int',
+            default: 0,
           },
           {
             name: 'games',
             type: 'int',
+            default: 0,
           },
           {
             name: 'wins',
             type: 'int',
+            default: 0,
           },
           {
             name: 'loss',
             type: 'int',
+            default: 0,
           },
           {
             name: 'ties',
             type: 'int',
+            default: 0,
           },
           {
             name: 'goal_pro',
             type: 'int',
+            default: 0,
           },
           {
             name: 'goal_against',
             type: 'int',
+            default: 0,
           },
           {
             name: 'goal_difference',
             type: 'int',
+            default: 0,
           },
         ],
       }),

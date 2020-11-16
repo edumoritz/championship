@@ -74,7 +74,6 @@ class CreateGameService {
 
     const gameRepo = await this.gamesRepository.create({ ...game });
 
-    console.log('3') 
     return gameRepo;
   }
 }

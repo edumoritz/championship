@@ -5,6 +5,8 @@ import IPlayerRepository from '../repositories/IPlayerRepository';
 import Player from '@modules/players/infra/typeorm/entities/Player';
 import AppError from '@shared/errors/AppError';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
+import IScoresRepository from '@modules/scores/repositories/IScoresRepository';
+import ICreateScoreDTO from '@modules/scores/dtos/ICreateScoreDTO';
 
 interface IRequest {
   name: string;
@@ -22,6 +24,9 @@ class CreatePlayerService {
     @inject('HashProvider')
     private hashProvider: IHashProvider,
 
+    @inject('ScoresRepository')
+    private scoresRepository: IScoresRepository,
+
   ) { }
 
   public async execute({ name, email, password }: IRequest): Promise<Player> {
@@ -34,14 +39,35 @@ class CreatePlayerService {
 
     const hashedPassword = await this.hashProvider.generateHash(password);
 
-    const player = await this.playersRepository.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
+    try {
 
+      const player = await this.playersRepository.create({
+        name,
+        email,
+        password: hashedPassword,
+      });
+  
+      const newScore: ICreateScoreDTO = {
+        games: 0,
+        goal_against: 0,
+        goal_difference: 0,
+        goal_pro: 0,
+        loss: 0,
+        points: 0,
+        ties: 0,
+        utilization: 0,
+        wins: 0,
+        player
+      }
+      await this.scoresRepository.create(newScore);
 
-    return player
+      return player
+
+    } catch (err) {
+      throw new AppError('Erro to create new player.');
+
+    }  
+    
   }
 }
 

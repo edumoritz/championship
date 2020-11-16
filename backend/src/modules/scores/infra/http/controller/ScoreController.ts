@@ -3,7 +3,6 @@ import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import CreateScoreService from '@modules/scores/services/CreateScoreService';
 import GetScoreService from '@modules/scores/services/GetScoreService';
-import UpdateScoreService from '@modules/scores/services/UpdateScoreService';
 import GetAllScoresService from '@modules/scores/services/GetAllScoresService';
 
 export default class ScoreController {
@@ -40,15 +39,4 @@ export default class ScoreController {
 
   }
 
-  public async update(request: Request, response: Response): Promise<Response> {
-
-    const updateScore = container.resolve(UpdateScoreService);
-
-    const score = await updateScore.execute({
-      ...request.body,
-      player: request.player.id
-    });
-
-    return response.json(classToClass(score));
-  }
 }

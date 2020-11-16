@@ -1,7 +1,7 @@
 import Player from "@modules/players/infra/typeorm/entities/Player";
 
 export default interface ICreateScoreDTO {
-  id: string;
+  id?: string;
   player: Player;
   points: number;
   games: number;
