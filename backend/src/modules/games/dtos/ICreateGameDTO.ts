@@ -1,4 +1,4 @@
-import Player from "@modules/players/infra/typeorm/entities/Player";
+import Player from '@modules/players/infra/typeorm/entities/Player';
 
 export default interface ICreateGameDTO {
   id: string;

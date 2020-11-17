@@ -7,15 +7,13 @@ import CreateGameService from '@modules/games/services/CreateGameService';
 
 export default class GameController {
   public async create(request: Request, response: Response): Promise<Response> {
-
     const createGame = container.resolve(CreateGameService);
 
     const game = await createGame.execute({
-      ...request.body
-    })
+      ...request.body,
+    });
 
     return response.json(game);
-
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
@@ -23,19 +21,19 @@ export default class GameController {
 
     const showGame = container.resolve(GetGameService);
 
-    const game = await showGame.execute({ player_id })
+    const game = await showGame.execute({ player_id });
 
     return response.json(classToClass(game));
   }
 
-  public async showAll(request: Request, response: Response): Promise<Response> {
-    
+  public async showAll(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
     const showGames = container.resolve(GetAllGamesService);
 
-    const games = await showGames.execute()
+    const games = await showGames.execute();
 
     return response.json(classToClass(games));
-
   }
-
 }

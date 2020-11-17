@@ -1,10 +1,10 @@
-import { inject, injectable } from "tsyringe";
+import { inject, injectable } from 'tsyringe';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 import Player from '@modules/players/infra/typeorm/entities/Player';
-import IPlayerRepository from "../repositories/IPlayerRepository";
+import { sign } from 'jsonwebtoken';
+import IPlayerRepository from '../repositories/IPlayerRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
-import { sign } from "jsonwebtoken";
 
 interface IRequest {
   email: string;
@@ -23,8 +23,7 @@ class AuthenticatePlayerService {
     private playersRepository: IPlayerRepository,
     @inject('HashProvider')
     private hashProvider: IHashProvider,
-
-  ) { }
+  ) {}
 
   public async execute({ email, password }: IRequest): Promise<IResponse> {
     const player = await this.playersRepository.findByEmail(email);
@@ -33,7 +32,10 @@ class AuthenticatePlayerService {
       throw new AppError('Incorrect email/password combination.', 401);
     }
 
-    const passwordMatched = await this.hashProvider.compareHash(password, player.password);
+    const passwordMatched = await this.hashProvider.compareHash(
+      password,
+      player.password || '',
+    );
 
     if (!passwordMatched) {
       throw new AppError('Incorrect email/password combination.', 401);
@@ -49,9 +51,7 @@ class AuthenticatePlayerService {
     return {
       player,
       token,
-    }
-
-
+    };
   }
 }
 

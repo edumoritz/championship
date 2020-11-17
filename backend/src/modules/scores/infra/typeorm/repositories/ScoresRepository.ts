@@ -10,17 +10,18 @@ class ScoresRepository implements IScoresRepository {
     this.ormRepository = getRepository(Score);
   }
 
-
   public async create(score: ICreateScoreDTO): Promise<Score> {
-
     const scoreRepo = this.ormRepository.create({ ...score });
 
     const newScore = await this.ormRepository.save({ ...scoreRepo });
 
     return newScore;
   }
+
   public async findByPlayerId(player_id: string): Promise<Score | undefined> {
-    const score = await this.ormRepository.findOne({ where: { player: player_id } });
+    const score = await this.ormRepository.findOne({
+      where: { player: player_id },
+    });
     return score;
   }
 
@@ -34,11 +35,9 @@ class ScoresRepository implements IScoresRepository {
   }
 
   public async findAll(): Promise<Score[] | undefined> {
-    const scores = await this.ormRepository.find();    
+    const scores = await this.ormRepository.find();
     return scores;
   }
-
-
 }
 
 export default ScoresRepository;

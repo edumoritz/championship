@@ -10,15 +10,12 @@ interface IRequest {
 
 @injectable()
 class GetScoreService {
-
   constructor(
     @inject('ScoresRepository')
     private scoresRepository: IScoresRepository,
-
-  ) { }
+  ) {}
 
   public async execute({ player_id }: IRequest): Promise<Score> {
-
     const score = await this.scoresRepository.findByPlayerId(player_id);
 
     if (!score) {

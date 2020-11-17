@@ -1,5 +1,5 @@
-import ICreateScoreDTO from "../dtos/ICreateScoreDTO";
-import Score from "../infra/typeorm/entities/Score";
+import ICreateScoreDTO from '../dtos/ICreateScoreDTO';
+import Score from '../infra/typeorm/entities/Score';
 
 export default interface IScoresRepository {
   create(score: ICreateScoreDTO): Promise<Score>;

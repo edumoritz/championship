@@ -1,9 +1,14 @@
-import Player from "@modules/players/infra/typeorm/entities/Player";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import Player from '@modules/players/infra/typeorm/entities/Player';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('games')
 class Game {
-
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -20,8 +25,6 @@ class Game {
 
   @Column()
   goals_player2: number;
-
-
 }
 
 export default Game;

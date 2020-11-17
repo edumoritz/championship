@@ -7,7 +7,6 @@ import GetAllPlayerService from '@modules/players/services/GetAllPlayersService'
 
 export default class PlayerController {
   public async create(request: Request, response: Response): Promise<Response> {
-
     const { name, email, password } = request.body;
 
     const createPlayer = container.resolve(CreatePlayerService);
@@ -26,18 +25,19 @@ export default class PlayerController {
 
     const showPlayer = container.resolve(GetPlayerService);
 
-    const player = await showPlayer.execute({ player_id })
+    const player = await showPlayer.execute({ player_id });
 
     return response.json(classToClass(player));
   }
 
-  public async showAll(request: Request, response: Response): Promise<Response> {
-    const player_id = request.player.id;
+  public async showAll(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
     const showPlayers = container.resolve(GetAllPlayerService);
 
-    const players = await showPlayers.execute()
+    const players = await showPlayers.execute();
 
     return response.json(classToClass(players));
-
   }
 }
