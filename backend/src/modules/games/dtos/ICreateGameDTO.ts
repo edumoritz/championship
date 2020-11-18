@@ -6,4 +6,5 @@ export default interface ICreateGameDTO {
   player2: Player;
   goals_player1: number;
   goals_player2: number;
+  created_at?: Date;
 }

@@ -1,7 +1,7 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateTablePlayerTokens1603659500368 implements MigrationInterface {
-
+export default class CreateTablePlayerTokens1603659500368
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -42,9 +42,9 @@ export class CreateTablePlayerTokens1603659500368 implements MigrationInterface 
             referencedColumnNames: ['id'],
             columnNames: ['player_id'],
             onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
-          }
-        ]
+            onUpdate: 'CASCADE',
+          },
+        ],
       }),
     );
   }
@@ -52,5 +52,4 @@ export class CreateTablePlayerTokens1603659500368 implements MigrationInterface 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('player_tokens');
   }
-
 }

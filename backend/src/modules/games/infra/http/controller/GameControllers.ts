@@ -17,11 +17,11 @@ export default class GameController {
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    const player_id = request.params.id;
+    const game_id = request.params.id;
 
     const showGame = container.resolve(GetGameService);
 
-    const game = await showGame.execute({ player_id });
+    const game = await showGame.execute({ game_id });
 
     return response.json(classToClass(game));
   }

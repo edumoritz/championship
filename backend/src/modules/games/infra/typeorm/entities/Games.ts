@@ -1,6 +1,7 @@
 import Player from '@modules/players/infra/typeorm/entities/Player';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
@@ -25,6 +26,9 @@ class Game {
 
   @Column()
   goals_player2: number;
+
+  @CreateDateColumn()
+  created_at: Date;
 }
 
 export default Game;

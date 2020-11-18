@@ -52,12 +52,15 @@ class CreateGameService {
       getScore1.goal_difference = getScore1.goal_pro - getScore1.goal_against;
       getScore2.goal_difference = getScore2.goal_pro - getScore2.goal_against;
 
-      if (getScore1.points > 0 && getScore2.points > 0) {
-        getScore1.utilization =
-          (getScore1.points / (getScore1.games * 3)) * 100;
-        getScore2.utilization =
-          (getScore2.points / (getScore2.games * 3)) * 100;
-      }
+      // if (getScore1.points > 0 && getScore2.points > 0) {
+      //   getScore1.utilization =
+      //     (getScore1.points / (getScore1.games * 3)) * 100;
+      //   getScore2.utilization =
+      //     (getScore2.points / (getScore2.games * 3)) * 100;
+      // }
+
+      getScore1.updated_at = new Date();
+      getScore2.updated_at = new Date();
 
       try {
         this.scoresRepository.save(getScore1);

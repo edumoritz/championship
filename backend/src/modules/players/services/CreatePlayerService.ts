@@ -52,6 +52,8 @@ class CreatePlayerService {
         ties: 0,
         utilization: 0,
         wins: 0,
+        created_at: new Date(),
+        updated_at: new Date(),
         player,
       };
       await this.scoresRepository.create(newScore);

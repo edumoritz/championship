@@ -1,10 +1,12 @@
 import Player from '@modules/players/infra/typeorm/entities/Player';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('scores')
@@ -42,6 +44,15 @@ class Score {
 
   @Column('decimal', { precision: 12, scale: 2 })
   utilization: number;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @UpdateDateColumn()
+  updated_at: Date;
+
+  @Column({ type: 'timestamp' })
+  closed_at: Date;
 }
 
 export default Score;

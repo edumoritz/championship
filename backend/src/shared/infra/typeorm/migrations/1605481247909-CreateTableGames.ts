@@ -1,7 +1,12 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
-export class CreateTableGames1605481247909 implements MigrationInterface {
-
+export default class CreateTableGames1605481247909
+  implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -17,12 +22,12 @@ export class CreateTableGames1605481247909 implements MigrationInterface {
           {
             name: 'player1',
             type: 'uuid',
-            isNullable: false
+            isNullable: false,
           },
           {
             name: 'player2',
             type: 'uuid',
-            isNullable: false
+            isNullable: false,
           },
           {
             name: 'goals_player1',
@@ -38,11 +43,6 @@ export class CreateTableGames1605481247909 implements MigrationInterface {
           },
           {
             name: 'created_at',
-            type: 'timestamp',
-            default: 'now()',
-          },
-          {
-            name: 'updated_at',
             type: 'timestamp',
             default: 'now()',
           },
@@ -79,5 +79,4 @@ export class CreateTableGames1605481247909 implements MigrationInterface {
     await queryRunner.dropForeignKey('games', 'Player2');
     await queryRunner.dropTable('games');
   }
-
 }

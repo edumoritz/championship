@@ -11,5 +11,8 @@ export default interface ICreateScoreDTO {
   goal_pro: number;
   goal_against: number;
   goal_difference: number;
-  utilization: number;
+  utilization?: number;
+  created_at?: Date;
+  updated_at?: Date;
+  closed_at?: Date;
 }

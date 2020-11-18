@@ -1,5 +1,5 @@
-import IPlayerTokensRepository from "@modules/players/repositories/IPlayerTokensRepository";
-import { getRepository, Repository } from "typeorm";
+import IPlayerTokensRepository from '@modules/players/repositories/IPlayerTokensRepository';
+import { getRepository, Repository } from 'typeorm';
 import PlayerToken from '../entities/PlayerToken';
 
 class PlayerTokensRepository implements IPlayerTokensRepository {
@@ -18,6 +18,7 @@ class PlayerTokensRepository implements IPlayerTokensRepository {
 
     return playerToken;
   }
+
   public async findByToken(token: string): Promise<PlayerToken | undefined> {
     const playerToken = await this.ormRepository.findOne({
       where: { token },
@@ -25,7 +26,6 @@ class PlayerTokensRepository implements IPlayerTokensRepository {
 
     return playerToken;
   }
-
 }
 
 export default PlayerTokensRepository;

@@ -21,7 +21,7 @@ export default class CreateTableScores1603240009662
           },
           {
             name: 'player_id',
-            type: 'uuid',            
+            type: 'uuid',
           },
           {
             name: 'points',
@@ -63,6 +63,26 @@ export default class CreateTableScores1603240009662
             type: 'int',
             default: 0,
           },
+          {
+            name: 'utilization',
+            type: 'decimal(12,2)',
+            isNullable: true,
+          },
+          {
+            name: 'closed_at',
+            type: 'timestamp',
+            isNullable: true,
+          },
+          {
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
+          {
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
+          },
         ],
       }),
     );
@@ -70,7 +90,7 @@ export default class CreateTableScores1603240009662
     await queryRunner.createForeignKey(
       'scores',
       new TableForeignKey({
-        name: 'PlayerScore',
+        name: 'fk_player_scores',
         columnNames: ['player_id'],
         referencedColumnNames: ['id'],
         referencedTableName: 'players',
