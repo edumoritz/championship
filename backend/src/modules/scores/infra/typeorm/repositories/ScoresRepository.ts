@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, IsNull, Not, Repository } from 'typeorm';
 import ICreateScoreDTO from '@modules/scores/dtos/ICreateScoreDTO';
 import IScoresRepository from '@modules/scores/repositories/IScoresRepository';
 import Score from '../entities/Score';
@@ -20,7 +20,7 @@ class ScoresRepository implements IScoresRepository {
 
   public async findByPlayerId(player_id: string): Promise<Score | undefined> {
     const score = await this.ormRepository.findOne({
-      where: { player: player_id },
+      where: { player: player_id, closed_at: IsNull() },
     });
     return score;
   }
@@ -36,6 +36,13 @@ class ScoresRepository implements IScoresRepository {
 
   public async findAll(): Promise<Score[] | undefined> {
     const scores = await this.ormRepository.find();
+    return scores;
+  }
+
+  public async findAllClosed(): Promise<Score[] | undefined> {
+    const scores = await this.ormRepository.find({
+      where: { closed_at: Not(IsNull()) },
+    });
     return scores;
   }
 }

@@ -19,12 +19,12 @@ container.registerSingleton<IPlayerRepository>(
 container.registerSingleton<IPlayerTokensRepository>(
   'PlayerTokensRepository',
   PlayerTokensRepository,
-)
+);
 
 container.registerSingleton<IScoresRepository>(
   'ScoresRepository',
   ScoresRepository,
-)
+);
 
 container.registerSingleton<IGamesRepository>(
   'GamesRepository',

@@ -7,4 +7,5 @@ export default interface IScoresRepository {
   findById(id: string): Promise<Score | undefined>;
   save(score: Score): Promise<Score>;
   findAll(): Promise<Score[] | undefined>;
+  findAllClosed(): Promise<Score[] | undefined>;
 }

@@ -9,5 +9,6 @@ const scoresController = new ScoreController();
 scoresRouter.use(ensureAuthenticated);
 scoresRouter.get('/:id', scoresController.show);
 scoresRouter.get('/', scoresController.showAll);
+scoresRouter.get('/closed/all', scoresController.showAllClosed);
 
 export default scoresRouter;
