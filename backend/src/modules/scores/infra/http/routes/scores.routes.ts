@@ -7,8 +7,8 @@ const scoresRouter = Router();
 const scoresController = new ScoreController();
 
 scoresRouter.use(ensureAuthenticated);
-scoresRouter.get('/:id', scoresController.show);
+scoresRouter.get('/closed', scoresController.showAllClosed);
 scoresRouter.get('/', scoresController.showAll);
-scoresRouter.get('/closed/all', scoresController.showAllClosed);
+scoresRouter.get('/:id', scoresController.show);
 
 export default scoresRouter;

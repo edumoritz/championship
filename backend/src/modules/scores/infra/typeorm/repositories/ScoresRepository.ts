@@ -30,7 +30,9 @@ class ScoresRepository implements IScoresRepository {
   }
 
   public async findById(id: string): Promise<Score | undefined> {
-    const score = await this.ormRepository.findOne(id);
+    const score = await this.ormRepository.findOne({
+      where: { id, closed_at: IsNull() },
+    });
     return score;
   }
 
