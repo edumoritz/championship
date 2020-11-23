@@ -101,7 +101,7 @@ export default class CreateTableScores1603240009662
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('scores', 'PlayerScore');
+    await queryRunner.dropForeignKey('scores', 'fk_player_scores');
     await queryRunner.dropTable('scores');
   }
 }

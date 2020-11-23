@@ -1,7 +1,10 @@
+import Championship from '@modules/championship/infra/typeorm/entities/Championship';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -19,6 +22,10 @@ class Player {
 
   @Column()
   password?: string;
+
+  @ManyToOne(() => Championship, champ => champ.id)
+  @JoinColumn({ name: 'championship_id' })
+  championship_id: Championship;
 
   @CreateDateColumn()
   created_at: Date;

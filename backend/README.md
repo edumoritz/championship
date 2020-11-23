@@ -1,14 +1,14 @@
 <h2>Create Games</h2><br>
 
-<li>The user shold inform both players and their goal balances</li>
+<li>The user shold inform both players and their goal balances.</li>
 <li>
 The backend will update each player's score and if it reaches 60 points or more
-it will create a new score for all registered players</li>
+it will create a new score for all registered players.</li>
+<li>To create a championship the user should enter a name and select the players.</li>
 
 <h2>Routes</h2><br>
 <h3>Login</h3>
 <li><strong>POST: </strong>http://localhost:3333/sessions</li>
-
 
 <h3>Create Player</h3>
 <li><strong>POST: </strong>http://localhost:3333/players</li>
@@ -28,4 +28,7 @@ it will create a new score for all registered players</li>
 
 <li><strong>GET: </strong>http://localhost:3333/scores/93f32caf-94ce-4178-877f-aae82de40972</li>
 <li><strong>GET: </strong>http://localhost:3333/scores</li>
+
+<h3>Championship</h3>
+<li><strong>POST: </strong>http://localhost:3333/championship</li>
 

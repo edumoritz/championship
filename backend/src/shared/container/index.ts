@@ -10,6 +10,8 @@ import IScoresRepository from '@modules/scores/repositories/IScoresRepository';
 import ScoresRepository from '@modules/scores/infra/typeorm/repositories/ScoresRepository';
 import IGamesRepository from '@modules/games/repositories/IGamesRepository';
 import GamesRepository from '@modules/games/infra/typeorm/repositories/GamesRepository';
+import ChampionshipRepository from '@modules/championship/infra/typeorm/repositories/ChampionshipRepository';
+import IChampionshipRepository from '@modules/championship/repositories/IChampionshipRepository';
 
 container.registerSingleton<IPlayerRepository>(
   'PlayersRepository',
@@ -29,4 +31,9 @@ container.registerSingleton<IScoresRepository>(
 container.registerSingleton<IGamesRepository>(
   'GamesRepository',
   GamesRepository,
+);
+
+container.registerSingleton<IChampionshipRepository>(
+  'ChampionshipRepository',
+  ChampionshipRepository,
 );
