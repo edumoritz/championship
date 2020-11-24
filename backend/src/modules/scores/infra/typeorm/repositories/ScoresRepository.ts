@@ -37,7 +37,9 @@ class ScoresRepository implements IScoresRepository {
   }
 
   public async findAll(): Promise<Score[] | undefined> {
-    const scores = await this.ormRepository.find();
+    const scores = await this.ormRepository.find({
+      where: { closed_at: IsNull() },
+    });
     return scores;
   }
 
