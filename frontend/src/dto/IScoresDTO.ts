@@ -9,6 +9,7 @@ export interface Score {
   goal_pro: number;
   goal_against: number;
   goal_difference: number;
+  utilization: number;
   player: Player;
 }
 

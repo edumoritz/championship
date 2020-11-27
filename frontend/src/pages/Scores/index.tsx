@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FiPower } from 'react-icons/fi';
+import { FaTrophy } from 'react-icons/fa';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -20,7 +23,7 @@ import { useAuth } from '../../hooks/auth';
 
 import HeaderComponent from '../../components/Header';
 
-const Dashboard: React.FC = () => {
+const Scores: React.FC = () => {
   const { player } = useAuth();
   const classes = useStyles();
 
@@ -33,6 +36,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
+      <HeaderComponent />
       <Content>
         <div className="title">
           <strong>Tabela de Jogos</strong>
@@ -92,4 +96,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default Scores;
