@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { FaTrophy } from 'react-icons/fa';
 import { FiPower, FiUserPlus, FiChevronLeft } from 'react-icons/fi';
 import { GiSoccerField, GiSoccerBall, GiLaurelsTrophy } from 'react-icons/gi';
@@ -20,7 +20,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import { useStyles } from './styles';
+import { useStyles, Button } from './styles';
 
 import { useAuth } from '../../hooks/auth';
 
@@ -29,8 +29,6 @@ const MenuDrawer: React.FC = ({ children }) => {
   const theme = useTheme();
   const { signOut, player } = useAuth();
   const [open, setOpen] = React.useState(false);
-
-  console.log(children);
 
   const handleDrawerOpen = useCallback(() => {
     setOpen(true);
@@ -44,6 +42,7 @@ const MenuDrawer: React.FC = ({ children }) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        style={{ background: '#080863' }}
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -63,7 +62,7 @@ const MenuDrawer: React.FC = ({ children }) => {
           </IconButton>
           <Typography variant="h6" noWrap>
             <span>Bem-vindo, </span>
-            <Link to="/profile">
+            <Link to="/">
               <strong>{player?.name}</strong>
             </Link>
           </Typography>
@@ -94,30 +93,30 @@ const MenuDrawer: React.FC = ({ children }) => {
         </div>
         <Divider />
         <List>
-          <ListItem button key="Novo Jogador">
+          <ListItem button>
             <ListItemIcon>
-              <FiUserPlus />
+              <FiUserPlus size="25" />
             </ListItemIcon>
             <ListItemText primary="Novo Jogador" />
           </ListItem>
 
-          <ListItem button key="Novo Jogo">
+          <ListItem button>
             <ListItemIcon>
-              <GiSoccerBall />
+              <GiSoccerBall size="25" />
             </ListItemIcon>
             <ListItemText primary="Novo Jogo" />
           </ListItem>
 
-          <ListItem button key="Tabela de Jogos">
+          <ListItem button>
             <ListItemIcon>
-              <GiSoccerField />
+              <GiSoccerField size="25" />
             </ListItemIcon>
             <ListItemText primary="Tabela de Jogos" />
           </ListItem>
 
-          <ListItem button key="Criar Campeonato">
+          <ListItem button>
             <ListItemIcon>
-              <GiLaurelsTrophy />
+              <GiLaurelsTrophy size="25" />
             </ListItemIcon>
             <ListItemText primary="Criar Campeonato" />
           </ListItem>

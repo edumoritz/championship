@@ -11,14 +11,14 @@ import Dashboard from '../pages/Dashboard';
 import MenuDrawer from '../components/Drawer';
 
 const Routes: React.FC = () => (
-  <MenuDrawer>
-    <Switch>
-      <Route path="/" exact component={SignIn} />
+  <Switch>
+    <Route path="/" exact component={SignIn} />
+    <Route path="/signup" component={SignUp} />
+    <Route path="/forgot-password" component={ForgotPassword} />
+    <MenuDrawer>
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/forgot-password" component={ForgotPassword} />
-    </Switch>
-  </MenuDrawer>
+    </MenuDrawer>
+  </Switch>
 );
 
 export default Routes;

@@ -16,21 +16,19 @@ const HeaderComponent: React.FC = () => {
       <Header>
         <HeaderContent>
           <Profile>
-            <motion.div whileHover={{ scale: 1.2 }} animate={{ rotate: 360 }}>
-              <FaTrophy className="icon" />
-            </motion.div>
+            <FaTrophy className="icon" />
             <div>
               <span>Bem-vindo, </span>
-              <Link to="/profile">
-                <strong>{player.name}</strong>
+              <Link to="/">
+                <strong className="">{player.name}</strong>
               </Link>
             </div>
           </Profile>
-          <button type="button" onClick={signOut}>
-            <motion.div whileHover={{ scale: 1.2 }} animate={{ rotate: 360 }}>
+          <motion.div whileHover={{ scale: 1.2 }} animate={{ rotate: 360 }}>
+            <button type="button" onClick={signOut}>
               <FiPower />
-            </motion.div>
-          </button>
+            </button>
+          </motion.div>
         </HeaderContent>
       </Header>
     </Container>
