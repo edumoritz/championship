@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-import { FaTrophy } from 'react-icons/fa';
+import { FaTrophy, FaDashcube, FaFutbol } from 'react-icons/fa';
 import { FiPower, FiUserPlus, FiChevronLeft } from 'react-icons/fi';
-import { GiSoccerField, GiSoccerBall, GiLaurelsTrophy } from 'react-icons/gi';
+import { GiSoccerField, GiTrophy } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 
 import Drawer from '@material-ui/core/Drawer';
@@ -27,6 +26,7 @@ import { useAuth } from '../../hooks/auth';
 const MenuDrawer: React.FC = ({ children }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const history = useHistory();
   const { signOut, player } = useAuth();
   const [open, setOpen] = React.useState(false);
 
@@ -37,6 +37,17 @@ const MenuDrawer: React.FC = ({ children }) => {
   const handleDrawerClose = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
+
+  // const handlePushRoute = (route: string) => {
+  //   history.push(`/${route}`);
+  // };
+
+  const handlePushRoute = useCallback(
+    (route: string) => {
+      history.push(`/${route}`);
+    },
+    [history],
+  );
 
   return (
     <div className={classes.root}>
@@ -93,30 +104,37 @@ const MenuDrawer: React.FC = ({ children }) => {
         </div>
         <Divider />
         <List>
-          <ListItem button>
+          <ListItem button onClick={() => handlePushRoute('dashboard')}>
+            <ListItemIcon>
+              <FaDashcube size="25" />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+
+          <ListItem button onClick={() => handlePushRoute('player')}>
             <ListItemIcon>
               <FiUserPlus size="25" />
             </ListItemIcon>
             <ListItemText primary="Novo Jogador" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={() => handlePushRoute('game')}>
             <ListItemIcon>
-              <GiSoccerBall size="25" />
+              <FaFutbol size="25" />
             </ListItemIcon>
             <ListItemText primary="Novo Jogo" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={() => handlePushRoute('scores')}>
             <ListItemIcon>
               <GiSoccerField size="25" />
             </ListItemIcon>
             <ListItemText primary="Tabela de Jogos" />
           </ListItem>
 
-          <ListItem button>
+          <ListItem button onClick={() => handlePushRoute('championship')}>
             <ListItemIcon>
-              <GiLaurelsTrophy size="25" />
+              <GiTrophy size="25" />
             </ListItemIcon>
             <ListItemText primary="Criar Campeonato" />
           </ListItem>

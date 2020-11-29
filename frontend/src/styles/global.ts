@@ -30,4 +30,6 @@ export default createGlobalStyle`
     color: #836fff;
   }
 
+
+
 `;

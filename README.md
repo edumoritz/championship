@@ -25,8 +25,7 @@
 
 ## 👹  Demo
 
-![Championship- Animated gif demo](demo/championship.gif)
-![Championship-dash - Animated gif demo](demo/championship-dash.gif)
+![Championship- Animated gif demo](demo/championship-demo.gif)
 
 ## 💻  Project
 

@@ -7,8 +7,12 @@ import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
 import ForgotPassword from '../pages/ForgotPassword';
 
-import Dashboard from '../pages/Dashboard';
 import MenuDrawer from '../components/Drawer';
+import Dashboard from '../pages/Dashboard';
+import Scores from '../pages/Scores';
+import Player from '../pages/Player';
+import Game from '../pages/Game';
+import Championship from '../pages/Championship';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -16,7 +20,11 @@ const Routes: React.FC = () => (
     <Route path="/signup" component={SignUp} />
     <Route path="/forgot-password" component={ForgotPassword} />
     <MenuDrawer>
+      <Route path="/scores" component={Scores} isPrivate />
       <Route path="/dashboard" component={Dashboard} isPrivate />
+      <Route path="/player" component={Player} isPrivate />
+      <Route path="/game" component={Game} isPrivate />
+      <Route path="/championship" component={Championship} isPrivate />
     </MenuDrawer>
   </Switch>
 );
