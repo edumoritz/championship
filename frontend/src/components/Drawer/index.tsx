@@ -111,12 +111,12 @@ const MenuDrawer: React.FC = ({ children }) => {
             <ListItemText primary="Dashboard" />
           </ListItem>
 
-          <ListItem button onClick={() => handlePushRoute('player')}>
+          {/* <ListItem button onClick={() => handlePushRoute('player')}>
             <ListItemIcon>
               <FiUserPlus size="25" />
             </ListItemIcon>
             <ListItemText primary="New Player" />
-          </ListItem>
+          </ListItem> */}
 
           <ListItem button onClick={() => handlePushRoute('game')}>
             <ListItemIcon>

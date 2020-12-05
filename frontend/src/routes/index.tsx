@@ -22,7 +22,6 @@ const Routes: React.FC = () => (
     <MenuDrawer>
       <Route path="/scores" component={Scores} isPrivate />
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/player" component={Player} isPrivate />
       <Route path="/game" component={Game} isPrivate />
       <Route path="/championship" component={Championship} isPrivate />
     </MenuDrawer>
