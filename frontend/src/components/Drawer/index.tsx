@@ -72,7 +72,7 @@ const MenuDrawer: React.FC = ({ children }) => {
             <FaTrophy />
           </IconButton>
           <Typography variant="h6" noWrap>
-            <span>Bem-vindo, </span>
+            <span>Welcome, </span>
             <Link to="/">
               <strong>{player?.name}</strong>
             </Link>
@@ -115,28 +115,28 @@ const MenuDrawer: React.FC = ({ children }) => {
             <ListItemIcon>
               <FiUserPlus size="25" />
             </ListItemIcon>
-            <ListItemText primary="Novo Jogador" />
+            <ListItemText primary="New Player" />
           </ListItem>
 
           <ListItem button onClick={() => handlePushRoute('game')}>
             <ListItemIcon>
               <FaFutbol size="25" />
             </ListItemIcon>
-            <ListItemText primary="Novo Jogo" />
+            <ListItemText primary="New Game" />
           </ListItem>
 
           <ListItem button onClick={() => handlePushRoute('scores')}>
             <ListItemIcon>
               <GiSoccerField size="25" />
             </ListItemIcon>
-            <ListItemText primary="Tabela de Jogos" />
+            <ListItemText primary="Games Table" />
           </ListItem>
 
           <ListItem button onClick={() => handlePushRoute('championship')}>
             <ListItemIcon>
               <GiTrophy size="25" />
             </ListItemIcon>
-            <ListItemText primary="Criar Campeonato" />
+            <ListItemText primary="Create Championships" />
           </ListItem>
         </List>
         <Divider />

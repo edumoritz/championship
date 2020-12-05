@@ -33,11 +33,11 @@ const SignUp: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          name: Yup.string().required('Nome obrigatório'),
+          name: Yup.string().required('Name is required'),
           email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
-          password: Yup.string().min(6, 'No mínimo 6 digitos'),
+            .required('E-mail is required')
+            .email('Enter a valid email address'),
+          password: Yup.string().min(6, 'At least 6 digits'),
         });
         await schema.validate(data, {
           abortEarly: false,
@@ -49,8 +49,8 @@ const SignUp: React.FC = () => {
 
         addToast({
           type: 'success',
-          title: 'Cadastro realizado!',
-          description: 'Você já pode fazer seu logon!',
+          title: 'Successful registration!',
+          description: 'You can now log in',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -61,8 +61,8 @@ const SignUp: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Erro no cadastro',
-          description: 'Ocorreu um erro ao fazer cadastro, tente novamente',
+          title: 'Registration error',
+          description: 'An error occurred while registering, please try again',
         });
       }
     },
@@ -97,24 +97,24 @@ const SignUp: React.FC = () => {
             <Form ref={formRef} onSubmit={handleSubmit}>
               <h1>Faça seu cadastro</h1>
 
-              <Input name="name" icon={FiUser} placeholder="Nome" />
+              <Input name="name" icon={FiUser} placeholder="Name" />
               <Input name="email" icon={FiMail} placeholder="E-mail" />
 
               <Input
                 name="password"
                 icon={FiLock}
                 type="password"
-                placeholder="Senha"
+                placeholder="Password"
               />
 
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
-                <Button type="submit">Cadastrar</Button>
+                <Button type="submit">Register</Button>
               </motion.div>
             </Form>
 
             <Link to="/">
               <FiArrowLeft />
-              Voltar para Logon
+              Back to login
             </Link>
           </FormContainer>
         </motion.div>

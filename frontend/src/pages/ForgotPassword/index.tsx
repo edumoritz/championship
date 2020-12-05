@@ -33,8 +33,8 @@ const ForgotPassword: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
+            .required('E-mail is required')
+            .email('Enter a valid email address'),
         });
         await schema.validate(data, {
           abortEarly: false,
@@ -46,9 +46,9 @@ const ForgotPassword: React.FC = () => {
 
         addToast({
           type: 'success',
-          title: 'E-mail de recuperação enviado',
+          title: 'Recovery email sent',
           description:
-            'Enviamos um e-mail para confirmar a recuperação de senha, cheque sua caixa de entrada',
+            'Send an email to confirm password revocery, check your inbox',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -59,9 +59,9 @@ const ForgotPassword: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Erro na recuperação de senha',
+          title: 'Password recovery error',
           description:
-            'Ocorreu um erro ao tentar realizar a recuperação de senha, tente novamente.',
+            'An error occurred while trying to perform password recovery, try again.',
         });
       } finally {
         setLoading(false);
@@ -95,20 +95,20 @@ const ForgotPassword: React.FC = () => {
             </motion.div>
 
             <Form ref={formRef} onSubmit={handleSubmit}>
-              <h1>Recuperar senha</h1>
+              <h1>Recover password</h1>
 
               <Input name="email" icon={FiMail} placeholder="E-mail" />
 
               <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
                 <Button loading={loading} type="submit">
-                  Recuperar
+                  Recovery
                 </Button>
               </motion.div>
             </Form>
 
             <Link to="/">
               <FiLogIn />
-              Voltar ao login
+              Back to login
             </Link>
           </FormContainer>
         </motion.div>

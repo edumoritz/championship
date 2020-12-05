@@ -33,23 +33,23 @@ const Dashboard: React.FC = () => {
     <Container>
       <Content>
         <div className="title">
-          <strong>Tabela de Jogos</strong>
+          <strong>Games Table</strong>
         </div>
         <motion.div layout transition={{ duration: 0.5 }}>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <StyledTableCell>Nome</StyledTableCell>
-                  <StyledTableCell align="right">Pontos</StyledTableCell>
-                  <StyledTableCell align="right">Jogos</StyledTableCell>
-                  <StyledTableCell align="right">Vitórias</StyledTableCell>
-                  <StyledTableCell align="right">Derrotas</StyledTableCell>
-                  <StyledTableCell align="right">Empates</StyledTableCell>
-                  <StyledTableCell align="right">Gols</StyledTableCell>
-                  <StyledTableCell align="right">Gols Contra</StyledTableCell>
+                  <StyledTableCell>Name</StyledTableCell>
+                  <StyledTableCell align="right">Points</StyledTableCell>
+                  <StyledTableCell align="right">Games</StyledTableCell>
+                  <StyledTableCell align="right">Wins</StyledTableCell>
+                  <StyledTableCell align="right">Loss</StyledTableCell>
+                  <StyledTableCell align="right">Ties</StyledTableCell>
+                  <StyledTableCell align="right">Goals</StyledTableCell>
+                  <StyledTableCell align="right">Goals against</StyledTableCell>
                   <StyledTableCell align="right">
-                    Diferença de Gols
+                    Goal difference
                   </StyledTableCell>
                   <StyledTableCell align="right">%</StyledTableCell>
                 </TableRow>
