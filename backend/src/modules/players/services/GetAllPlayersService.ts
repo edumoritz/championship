@@ -18,7 +18,13 @@ class GetAllPlayerService {
       throw new AppError('Players not found.');
     }
 
-    return players;
+    const newPlayers = players.map(player => {
+      // eslint-disable-next-line no-param-reassign
+      delete player.password;
+      return player;
+    });
+
+    return newPlayers;
   }
 }
 

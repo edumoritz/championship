@@ -22,6 +22,8 @@ class GetPlayerService {
       throw new AppError('Player not found.');
     }
 
+    delete player.password;
+
     return player;
   }
 }
