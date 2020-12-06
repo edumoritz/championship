@@ -10,7 +10,6 @@ import ForgotPassword from '../pages/ForgotPassword';
 import MenuDrawer from '../components/Drawer';
 import Dashboard from '../pages/Dashboard';
 import Scores from '../pages/Scores';
-import Player from '../pages/Player';
 import Game from '../pages/Game';
 import Championship from '../pages/Championship';
 

@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import { FaTrophy, FaDashcube, FaFutbol } from 'react-icons/fa';
-import { FiPower, FiUserPlus, FiChevronLeft } from 'react-icons/fi';
+import { FiPower, FiChevronLeft } from 'react-icons/fi';
 import { GiSoccerField, GiTrophy } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 
