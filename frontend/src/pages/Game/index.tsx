@@ -26,6 +26,8 @@ interface CreateGameFormData {
 const Game: React.FC = () => {
   const { addToast } = useToast();
   const [players, setPlayers] = useState<IPlayerDTOs[]>([]);
+  const [getPlayer1, setPlayer1] = useState<any>({});
+  const [getPlayer2, setPlayer2] = useState<any>({});
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
@@ -42,8 +44,13 @@ const Game: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        console.log(data);
-        const response = await api.post('/games', data);
+        const body = {
+          ...data,
+          player1: getPlayer1.id,
+          player2: getPlayer2.id,
+        };
+        console.log(body);
+        const response = await api.post('/games', body);
         console.log(response);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -81,6 +88,7 @@ const Game: React.FC = () => {
             options={players}
             renderOption={option => <>{option.name}</>}
             getOptionLabel={option => option.name}
+            onChange={(event, newValue) => setPlayer1(newValue)}
             renderInput={params => (
               <TextField
                 {...params}
@@ -101,6 +109,7 @@ const Game: React.FC = () => {
             options={players}
             renderOption={option => <>{option.name}</>}
             getOptionLabel={option => option.name}
+            onChange={(event, newValue) => setPlayer2(newValue)}
             renderInput={params => (
               <TextField
                 {...params}
