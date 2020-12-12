@@ -44,14 +44,26 @@ This project is being developed with the following technologies:
 - [Styled-Components][styled]
 
 ## 🌚  Backend
+First you should have cloned this repository: 
+`git clone https://github.com/edumoritz/championship.git`
+```
+cd backend
+npm install
 
-...
+Yo should create .env and ormconfig.json at the root of the project based on the examples
+npm start
+```
 
 ## 🌕  Frontend
+First you should have cloned this repository: 
+`git clone https://github.com/edumoritz/championship.git`
+```
+cd frontend
+npm install
+npm start
+```
 
-...
-
-Made with ♥ by Eduardo Moritz :wave: [Get in touch!](https://www.linkedin.com/in/eduardo-moritz-5298a0118/)
+Made with by Eduardo Moritz :wave: [Get in touch!](https://www.linkedin.com/in/eduardo-moritz-5298a0118/)
 
 [nodejs]: https://nodejs.org/
 [reactjs]: https://reactjs.org/
