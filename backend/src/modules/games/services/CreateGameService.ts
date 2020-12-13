@@ -19,6 +19,9 @@ class CreateGameService {
   public async execute(game: ICreateGameDTO): Promise<Game> {
     const { player1, player2, goals_player1, goals_player2 } = game;
 
+    const goalsPlayer1 = Number(goals_player1);
+    const goalsPlayer2 = Number(goals_player2);
+
     const getScore1 = await this.scoresRepository.findByPlayerId(
       String(player1),
     );
@@ -30,11 +33,11 @@ class CreateGameService {
       getScore1.games += 1;
       getScore2.games += 1;
 
-      if (goals_player1 > goals_player2) {
+      if (goalsPlayer1 > goalsPlayer2) {
         getScore1.points += 3;
         getScore1.wins += 1;
         getScore2.loss += 1;
-      } else if (goals_player1 === goals_player2) {
+      } else if (goalsPlayer1 === goalsPlayer2) {
         getScore1.ties += 1;
         getScore2.ties += 1;
       } else {
@@ -43,12 +46,12 @@ class CreateGameService {
         getScore1.loss += 1;
       }
 
-      getScore1.goal_pro += goals_player1;
-      getScore2.goal_pro += goals_player2;
+      getScore1.goal_pro += goalsPlayer1;
+      getScore2.goal_pro += goalsPlayer2;
       getScore1.goal_against =
-        getScore1.goal_against + goals_player2 ? goals_player2 : 0;
+        getScore1.goal_against + goalsPlayer2 ? goalsPlayer2 : 0;
       getScore2.goal_against =
-        getScore2.goal_against + goals_player1 ? goals_player1 : 0;
+        getScore2.goal_against + goalsPlayer1 ? goalsPlayer1 : 0;
 
       getScore1.goal_difference = getScore1.goal_pro - getScore1.goal_against;
       getScore2.goal_difference = getScore2.goal_pro - getScore2.goal_against;
