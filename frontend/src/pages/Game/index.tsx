@@ -14,7 +14,7 @@ import api from '../../services/api';
 
 import { Content, PlayersContainer, GoalsContainer } from './styles';
 import Button from '../../components/Button';
-import { IPlayerDTOs } from '../../dto/IPlayersDTO';
+import { IPlayerDTO } from '../../dto/IPlayersDTO';
 
 interface CreateGameFormData {
   player1: string;
@@ -25,10 +25,11 @@ interface CreateGameFormData {
 
 const Game: React.FC = () => {
   const { addToast } = useToast();
-  const [players, setPlayers] = useState<IPlayerDTOs[]>([]);
-  const [getPlayer1, setPlayer1] = useState<any>({});
-  const [getPlayer2, setPlayer2] = useState<any>({});
   const formRef = useRef<FormHandles>(null);
+  const defaultPlayer = { id: '', name: '', email: '' };
+  const [players, setPlayers] = useState<IPlayerDTO[]>([]);
+  const [getPlayer1, setPlayer1] = useState('');
+  const [getPlayer2, setPlayer2] = useState('');
 
   const handleSubmit = useCallback(
     async (data: CreateGameFormData) => {
@@ -44,14 +45,25 @@ const Game: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
+        // console.log('data: ', data);
         const body = {
           ...data,
-          player1: getPlayer1.id,
-          player2: getPlayer2.id,
+          player1: getPlayer1,
+          player2: getPlayer2,
         };
+        await api.post('/games', body);
         console.log(body);
-        const response = await api.post('/games', body);
-        console.log(response);
+
+        addToast({
+          type: 'success',
+          title: 'Game Registered!',
+          description: 'The game was successfully registred!',
+        });
+        formRef.current?.reset();
+        // formRef.current?.clearField('player1');
+        // formRef.current?.clearField('player2');
+        setPlayer1('');
+        setPlayer2('');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -62,18 +74,29 @@ const Game: React.FC = () => {
         addToast({
           type: 'error',
           title: 'Error',
-          description: 'An error occurred while ...',
+          description: 'An error occurred while registering the game',
         });
       }
     },
-    [addToast],
+    [addToast, getPlayer1, getPlayer2],
   );
 
   useEffect(() => {
     api.get(`/players`).then(response => {
       setPlayers(response.data);
     });
+    console.log('players: ', players)
   }, []);
+
+  const handleChange = useCallback(
+    (data: IPlayerDTO, player: number) => {
+      if (player === 1) setPlayer1(data.id)
+      else setPlayer1(data.id)
+    },
+    []
+  );
+
+
 
   return (
     <Content>
@@ -88,7 +111,7 @@ const Game: React.FC = () => {
             options={players}
             renderOption={option => <>{option.name}</>}
             getOptionLabel={option => option.name}
-            onChange={(event, newValue) => setPlayer1(newValue)}
+            onChange={(event, value) => handleChange(value as IPlayerDTO, 1)}
             renderInput={params => (
               <TextField
                 {...params}
@@ -109,7 +132,7 @@ const Game: React.FC = () => {
             options={players}
             renderOption={option => <>{option.name}</>}
             getOptionLabel={option => option.name}
-            onChange={(event, newValue) => setPlayer2(newValue)}
+            onChange={(event, value) => handleChange(value as IPlayerDTO, 2)}
             renderInput={params => (
               <TextField
                 {...params}

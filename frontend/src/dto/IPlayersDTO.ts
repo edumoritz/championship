@@ -1,4 +1,4 @@
-export interface IPlayerDTOs {
+export interface IPlayerDTO {
   id: string;
   name: string;
   email: string;
