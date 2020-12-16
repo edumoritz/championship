@@ -85,18 +85,13 @@ const Game: React.FC = () => {
     api.get(`/players`).then(response => {
       setPlayers(response.data);
     });
-    console.log('players: ', players)
+    console.log('players: ', players);
   }, []);
 
-  const handleChange = useCallback(
-    (data: IPlayerDTO, player: number) => {
-      if (player === 1) setPlayer1(data.id)
-      else setPlayer1(data.id)
-    },
-    []
-  );
-
-
+  const handleChange = useCallback((data: IPlayerDTO, player: number) => {
+    if (player === 1) setPlayer1(data.id);
+    else setPlayer1(data.id);
+  }, []);
 
   return (
     <Content>
