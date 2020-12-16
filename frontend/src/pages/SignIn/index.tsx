@@ -56,10 +56,12 @@ const SignIn: React.FC = () => {
           return;
         }
 
+        const { message } = err.response.data;
         addToast({
           type: 'error',
           title: 'Authentication error',
           description:
+            message ||
             'An error occurred while signing in, check the credentials',
         });
       }
@@ -111,7 +113,7 @@ const SignIn: React.FC = () => {
             <Link to="/forgot-password">Forgot my password</Link>
             <Link to="signup">
               <FiLogIn />
-              create an account
+              Create an account
             </Link>
           </FormContainer>
         </motion.div>

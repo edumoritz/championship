@@ -7,7 +7,9 @@ const Dashboard: React.FC = () => {
   return (
     <Container>
       <Content>
-        <div className="title">Welcome to Championship App</div>
+        <div className="title">
+          <strong>Welcome to Championship App</strong>
+        </div>
         <div className="description">
           <p>
             You can create a game and championship, you can also visualize your

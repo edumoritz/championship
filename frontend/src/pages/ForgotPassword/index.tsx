@@ -56,11 +56,13 @@ const ForgotPassword: React.FC = () => {
           formRef.current?.setErrors(errors);
           return;
         }
+        const { message } = err.response.data;
 
         addToast({
           type: 'error',
           title: 'Password recovery error',
           description:
+            message ||
             'An error occurred while trying to perform password recovery, try again.',
         });
       } finally {

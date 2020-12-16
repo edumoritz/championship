@@ -59,10 +59,12 @@ const SignUp: React.FC = () => {
           return;
         }
 
+        const { message } = err.response.data;
         addToast({
           type: 'error',
           title: 'Registration error',
-          description: 'An error occurred while registering, please try again',
+          description:
+            message || 'An error occurred while registering, please try again',
         });
       }
     },

@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { motion } from 'framer-motion';
 import { Form } from '@unform/web';
@@ -25,8 +26,8 @@ interface CreateGameFormData {
 
 const Game: React.FC = () => {
   const { addToast } = useToast();
+  const history = useHistory();
   const formRef = useRef<FormHandles>(null);
-  const defaultPlayer = { id: '', name: '', email: '' };
   const [players, setPlayers] = useState<IPlayerDTO[]>([]);
   const [getPlayer1, setPlayer1] = useState('');
   const [getPlayer2, setPlayer2] = useState('');
@@ -45,14 +46,13 @@ const Game: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        // console.log('data: ', data);
         const body = {
           ...data,
           player1: getPlayer1,
           player2: getPlayer2,
         };
+        // console.log(body);
         await api.post('/games', body);
-        console.log(body);
 
         addToast({
           type: 'success',
@@ -64,38 +64,42 @@ const Game: React.FC = () => {
         // formRef.current?.clearField('player2');
         setPlayer1('');
         setPlayer2('');
+        history.push('/scores');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
           formRef.current?.setErrors(errors);
           return;
         }
+        const { message } = err.response.data;
 
         addToast({
           type: 'error',
           title: 'Error',
-          description: 'An error occurred while registering the game',
+          description:
+            message || 'An error occurred while registering the game',
         });
       }
     },
-    [addToast, getPlayer1, getPlayer2],
+    [history, addToast, getPlayer1, getPlayer2],
   );
 
   useEffect(() => {
     api.get(`/players`).then(response => {
       setPlayers(response.data);
     });
-    console.log('players: ', players);
   }, []);
 
   const handleChange = useCallback((data: IPlayerDTO, player: number) => {
     if (player === 1) setPlayer1(data.id);
-    else setPlayer1(data.id);
+    else setPlayer2(data.id);
   }, []);
 
   return (
     <Content>
-      <div className="title">Create Game</div>
+      <div className="title">
+        <strong>Create Game</strong>
+      </div>
       <Form ref={formRef} onSubmit={handleSubmit}>
         <PlayersContainer>
           <Autocomplete
@@ -148,6 +152,7 @@ const Game: React.FC = () => {
             label="Goals player 1"
             variant="outlined"
             type="number"
+            InputProps={{ inputProps: { min: 0 } }}
           />
           <FiX size={60} />
           <TextField
@@ -157,9 +162,10 @@ const Game: React.FC = () => {
             label="Goals player 2"
             variant="outlined"
             type="number"
+            InputProps={{ inputProps: { min: 0 } }}
           />
         </GoalsContainer>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.5 }}>
           <Button type="submit">Save</Button>
         </motion.div>
       </Form>

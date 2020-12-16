@@ -33,6 +33,6 @@ export default class AddColumnChampionshipId1606076492653
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropForeignKey('players', 'PlayersChampionship');
 
-    await queryRunner.dropColumn('players', 'champonship_id');
+    await queryRunner.dropColumn('players', 'championship_id');
   }
 }

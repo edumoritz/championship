@@ -23,17 +23,16 @@
   <a href="#-frontend">Frontend</a>
 </p>
 
-## 👹  Demo
+## 👹 Demo
 
-![Championship- Animated gif demo](demo/championship-demo.gif)
+![Championship- Animated gif demo](demo/championship-dash.gif)
 
-## 💻  Project
+## 💻 Project
 
 This is a football game scoring project.
 It was created to train the use of reactjs libraries and record scores of FIFA games.
 
-
-## 👾  Technologies
+## 👾 Technologies
 
 This project is being developed with the following technologies:
 
@@ -43,9 +42,11 @@ This project is being developed with the following technologies:
 - [Material-UI][materialui]
 - [Styled-Components][styled]
 
-## 🌚  Backend
-First you should have cloned this repository: 
+## 🌚 Backend
+
+First you should have cloned this repository:
 `git clone https://github.com/edumoritz/championship.git`
+
 ```
 cd backend
 npm install
@@ -54,9 +55,11 @@ Yo should create .env and ormconfig.json at the root of the project based on the
 npm start
 ```
 
-## 🌕  Frontend
-First you should have cloned this repository: 
+## 🌕 Frontend
+
+First you should have cloned this repository:
 `git clone https://github.com/edumoritz/championship.git`
+
 ```
 cd frontend
 npm install

@@ -14,7 +14,9 @@ const Player: React.FC = () => {
   return (
     <Container>
       <Content>
-        <div className="title">Create Player</div>
+        <div className="title">
+          <strong>Create Player</strong>
+        </div>
         <Loading />
       </Content>
     </Container>

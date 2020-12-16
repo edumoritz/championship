@@ -19,6 +19,10 @@ class CreateGameService {
   public async execute(game: ICreateGameDTO): Promise<Game> {
     const { player1, player2, goals_player1, goals_player2 } = game;
 
+    if (player1 === player2) {
+      throw new AppError('Players must be different.');
+    }
+
     const goalsPlayer1 = Number(goals_player1);
     const goalsPlayer2 = Number(goals_player2);
 
@@ -48,10 +52,8 @@ class CreateGameService {
 
       getScore1.goal_pro += goalsPlayer1;
       getScore2.goal_pro += goalsPlayer2;
-      getScore1.goal_against =
-        getScore1.goal_against + goalsPlayer2 ? goalsPlayer2 : 0;
-      getScore2.goal_against =
-        getScore2.goal_against + goalsPlayer1 ? goalsPlayer1 : 0;
+      getScore1.goal_against += goalsPlayer2;
+      getScore2.goal_against += goalsPlayer1;
 
       getScore1.goal_difference = getScore1.goal_pro - getScore1.goal_against;
       getScore2.goal_difference = getScore2.goal_pro - getScore2.goal_against;

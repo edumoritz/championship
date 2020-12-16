@@ -7,7 +7,9 @@ const Championship: React.FC = () => {
   return (
     <Container>
       <Content>
-        <div className="title">Create Championship</div>
+        <div className="title">
+          <strong>Create Championship</strong>
+        </div>
         <Loading />
       </Content>
     </Container>
