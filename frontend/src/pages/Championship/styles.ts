@@ -18,4 +18,20 @@ export const Content = styled.main`
     font-size: 20px;
     margin-bottom: 10px;
   }
+  .form-control {
+    margin: 4px;
+    width: 100%;
+  }
+  .chips {
+    display: flex;
+  }
+  .chip {
+    margin: 2px;
+  }
+  .noLabel {
+    margin-top: 3px;
+  }
+  .text-field {
+    margin-bottom: 5px;
+  }
 `;

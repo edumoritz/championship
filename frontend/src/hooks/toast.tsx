@@ -30,8 +30,9 @@ const ToastProvider: React.FC = ({ children }) => {
         description,
       };
 
-      setMessage(state => [...messagem, toast]);
+      setMessage(() => [...messagem, toast]);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 
