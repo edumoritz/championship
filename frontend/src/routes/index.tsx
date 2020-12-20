@@ -12,6 +12,7 @@ import Dashboard from '../pages/Dashboard';
 import Scores from '../pages/Scores';
 import Game from '../pages/Game';
 import Championship from '../pages/Championship';
+import ViewChampionship from '../pages/ViewChampionship';
 
 const Routes: React.FC = () => (
   <Switch>
@@ -23,6 +24,7 @@ const Routes: React.FC = () => (
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/game" component={Game} isPrivate />
       <Route path="/championship" component={Championship} isPrivate />
+      <Route path="/view-championship" component={ViewChampionship} isPrivate />
     </MenuDrawer>
   </Switch>
 );

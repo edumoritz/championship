@@ -22,6 +22,9 @@ class CreateChampionshipService {
   ) {}
 
   public async execute({ name, players }: IRequest): Promise<Championship> {
+    if (players.length < 4) {
+      throw new AppError('Must have more than 4 players.');
+    }
     try {
       const newChampionship = await this.championshipRepository.create({
         name,

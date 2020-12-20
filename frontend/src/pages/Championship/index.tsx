@@ -6,7 +6,6 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
-// import Select from '@material-ui/core/Select';
 import Chip from '@material-ui/core/Chip';
 import * as Yup from 'yup';
 import Button from '../../components/Button';
@@ -30,17 +29,20 @@ const MenuProps = {
 
 const Championship: React.FC = () => {
   const { addToast } = useToast();
-  // const theme = useTheme();
   const formRef = useRef<FormHandles>(null);
   const [players, setPlayers] = useState<IPlayerDTO[]>([]);
-  // const [getPlayer, setPlayer] = useState('');
-  const [getPlayer, setPlayer] = React.useState<string[]>([]);
+  const [playerName, setPlayerName] = React.useState<string[]>([]);
 
   const handleSubmit = useCallback(
     async (data: IChampionshipResponse) => {
       try {
         // formRef.current?.setErrors({});
-        console.log(data);
+
+        const body = {
+          ...data,
+          chips: data.chips.map(chip => chip[0]),
+        };
+        console.log(body);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           // formRef.current?.setErrors(errors);
@@ -67,7 +69,8 @@ const Championship: React.FC = () => {
 
   const handleChange = useCallback(
     (event: React.ChangeEvent<{ value: unknown }>) => {
-      setPlayer(event.target.value as string[]);
+      const listChips = event.target.value as string[];
+      setPlayerName(listChips);
     },
     [],
   );
@@ -92,20 +95,20 @@ const Championship: React.FC = () => {
               multiple
               label="Players"
               name="chips"
-              value={getPlayer}
+              value={playerName}
               onChange={handleChange}
               input={<Input />}
               renderValue={selected => (
                 <div className="chips">
                   {(selected as string[]).map(value => (
-                    <Chip key={value} label={value} className="chip" />
+                    <Chip key={value[0]} label={value[1]} className="chip" />
                   ))}
                 </div>
               )}
               MenuProps={MenuProps}
             >
               {players.map(player => (
-                <MenuItem key={player.id} value={player.name}>
+                <MenuItem key={player.id} value={[player.id, player.name]}>
                   {player.name}
                 </MenuItem>
               ))}

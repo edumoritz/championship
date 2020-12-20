@@ -97,7 +97,7 @@ const SignUp: React.FC = () => {
             </motion.div>
 
             <Form ref={formRef} onSubmit={handleSubmit}>
-              <h1>Faça seu cadastro</h1>
+              <h1>Make your registration</h1>
 
               <Input name="name" icon={FiUser} placeholder="Name" />
               <Input name="email" icon={FiMail} placeholder="E-mail" />

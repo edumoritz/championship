@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { useTheme } from '@material-ui/core/styles';
 import { FaTrophy, FaDashcube, FaFutbol } from 'react-icons/fa';
 import { FiPower, FiChevronLeft } from 'react-icons/fi';
-import { GiSoccerField, GiTrophy } from 'react-icons/gi';
+import { GiSoccerField, GiTrophy, GiLaurelCrown } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 
 import Drawer from '@material-ui/core/Drawer';
@@ -37,10 +37,6 @@ const MenuDrawer: React.FC = ({ children }) => {
   const handleDrawerClose = useCallback(() => {
     setOpen(false);
   }, [setOpen]);
-
-  // const handlePushRoute = (route: string) => {
-  //   history.push(`/${route}`);
-  // };
 
   const handlePushRoute = useCallback(
     (route: string) => {
@@ -111,13 +107,6 @@ const MenuDrawer: React.FC = ({ children }) => {
             <ListItemText primary="Dashboard" />
           </ListItem>
 
-          {/* <ListItem button onClick={() => handlePushRoute('player')}>
-            <ListItemIcon>
-              <FiUserPlus size="25" />
-            </ListItemIcon>
-            <ListItemText primary="New Player" />
-          </ListItem> */}
-
           <ListItem button onClick={() => handlePushRoute('game')}>
             <ListItemIcon>
               <FaFutbol size="25" />
@@ -137,6 +126,13 @@ const MenuDrawer: React.FC = ({ children }) => {
               <GiTrophy size="25" />
             </ListItemIcon>
             <ListItemText primary="Create Championships" />
+          </ListItem>
+
+          <ListItem button onClick={() => handlePushRoute('view-championship')}>
+            <ListItemIcon>
+              <GiLaurelCrown size="25" />
+            </ListItemIcon>
+            <ListItemText primary="View Championships" />
           </ListItem>
         </List>
         <Divider />

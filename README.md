@@ -41,6 +41,7 @@ This project is being developed with the following technologies:
 - [Framer-Motion][framermotion]
 - [Material-UI][materialui]
 - [Styled-Components][styled]
+- [Integration Uniform with Material-ui][integration]
 
 ## 🌚 Backend
 
@@ -73,3 +74,4 @@ Made with by Eduardo Moritz :wave: [Get in touch!](https://www.linkedin.com/in/e
 [framermotion]: https://www.framer.com/motion/
 [materialui]: https://material-ui.com/pt/
 [styled]: https://styled-components.com/
+[integration]: https://www.npmjs.com/package/unform-material-ui
