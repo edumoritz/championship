@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 export const Container = styled.div``;
 
@@ -19,3 +20,16 @@ export const Content = styled.main`
     margin-bottom: 10px;
   }
 `;
+
+export const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    },
+  }),
+);

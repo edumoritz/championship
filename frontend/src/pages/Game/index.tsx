@@ -7,7 +7,6 @@ import { FormHandles } from '@unform/core';
 import { TextField } from 'unform-material-ui';
 import * as Yup from 'yup';
 import { FiX } from 'react-icons/fi';
-// import Loading from '../../components/Loading';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { useToast } from '../../hooks/toast';
 
