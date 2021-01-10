@@ -17,21 +17,23 @@ export const Content = styled.main`
     font-size: 20px;
     margin-bottom: 10px;
   }
-  svg {
-    margin: 0 20px;
-    align-items: center;
+  .form-control {
+    margin: 4px;
+    width: 100%;
+  }
+  .chips {
+    display: flex;
+  }
+  .chip {
+    margin: 2px;
+  }
+  .noLabel {
+    margin-top: 3px;
+  }
+  .text-field {
+    margin-bottom: 5px;
   }
   button {
     width: 150px;
   }
-`;
-export const PlayersContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-export const GoalsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-  margin-top: 20px;
 `;
