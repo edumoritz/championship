@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useAuth } from '../hooks/auth';
+import validationLogin from '../utils/validationLogin';
 
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
@@ -17,7 +18,11 @@ const Route: React.FC<RouteProps> = ({
   component: Component,
   ...rest
 }) => {
-  const { player } = useAuth();
+  const { player, signOut } = useAuth();
+
+  if (player) {
+    if (validationLogin(player.updated_at)) signOut();
+  }
 
   return (
     <ReactDOMRoute

@@ -5,6 +5,7 @@ interface Player {
   id: string;
   name: string;
   email: string;
+  updated_at: string;
 }
 
 interface AuthState {
@@ -84,6 +85,10 @@ const AuthProvider: React.FC = ({ children }) => {
 
 function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error('useAuth must be used withing an AthProvider');
+  }
 
   return context;
 }
