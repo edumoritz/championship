@@ -16,17 +16,6 @@ import api from '../../services/api';
 import { IPlayerDTO } from '../../dto/IPlayersDTO';
 import { IChampionshipResponse } from '../../dto/IChamponshipDTO';
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
 const ChampionshipCreate: React.FC = () => {
   const { addToast } = useToast();
   const formRef = useRef<FormHandles>(null);
@@ -64,13 +53,10 @@ const ChampionshipCreate: React.FC = () => {
     });
   }, []);
 
-  const handleChange = useCallback(
-    (event: React.ChangeEvent<{ value: unknown }>) => {
-      const listChips = event.target.value as string[];
-      setPlayerName(listChips);
-    },
-    [],
-  );
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setPlayerName(event.target.value as string[]);
+  };
 
   return (
     <Container>
@@ -92,20 +78,33 @@ const ChampionshipCreate: React.FC = () => {
               multiple
               label="Players"
               name="chips"
-              value={playerName}
               onChange={handleChange}
               input={<Input />}
               renderValue={selected => (
                 <div className="chips">
                   {(selected as string[]).map(value => (
-                    <Chip key={value[0]} label={value[1]} className="chip" />
+                    <Chip
+                      key={value}
+                      label={value}
+                      className="chip"
+                      color="primary"
+                      variant="outlined"
+                    />
                   ))}
                 </div>
               )}
-              MenuProps={MenuProps}
             >
               {players.map(player => (
-                <MenuItem key={player.id} value={[player.id, player.name]}>
+                <MenuItem
+                  key={player.id}
+                  value={player.name}
+                  style={{
+                    fontWeight:
+                      playerName.indexOf(player.name) === -1
+                        ? 'inherit'
+                        : 'bold',
+                  }}
+                >
                   {player.name}
                 </MenuItem>
               ))}
